@@ -122,7 +122,6 @@ const pieBuilder = (monkeybuttArray) => {
     printToDom('pie-safe', domString);
 };
 
-pieBuilder(pies);
 
 const findMyPies = (e) => {
     const buttonId = e.target.id;
@@ -140,9 +139,18 @@ const findMyPies = (e) => {
     }
 }
 
+const events = () => {
+    document.getElementById('Zoe').addEventListener('click', findMyPies);
+    document.getElementById('Mary').addEventListener('click', findMyPies);
+    document.getElementById('Luke').addEventListener('click', findMyPies);
+    document.getElementById('Chris').addEventListener('click', findMyPies);
+    document.getElementById('All').addEventListener('click', findMyPies);
+}
 
-document.getElementById('Zoe').addEventListener('click', findMyPies);
-document.getElementById('Mary').addEventListener('click', findMyPies);
-document.getElementById('Luke').addEventListener('click', findMyPies);
-document.getElementById('Chris').addEventListener('click', findMyPies);
-document.getElementById('All').addEventListener('click', findMyPies);
+const init = () => {
+    pieBuilder(pies);
+    events();
+};
+
+init();
+
