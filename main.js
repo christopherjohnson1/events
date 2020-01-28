@@ -1,5 +1,3 @@
-console.log('EVENTS');
-
 const pies = [
     {
         name: "Dutch Apple",
@@ -98,8 +96,6 @@ const pies = [
     },
 ]
 
-console.log('pies', pies);
-
 // 3 cards per row
 // nice images
 // display all info in the pie objects
@@ -108,23 +104,53 @@ const printToDom = (divId, textToPrint) => {
     selectedDiv.innerHTML = textToPrint;
 };
 
-const pieBuilder = () => {
+const pieBuilder = (monkeybuttArray) => {
     let domString = '';
-    for(let i = 0; i < pies.length; i++) {
+    for(let i = 0; i < monkeybuttArray.length; i++) {
     domString += '<div class="pie">';
-    domString += `<h1 class='name'>${pies[i].name}</h1>`;
-    domString += `<div><img class="img" src=${pies[i].imgUrl} alt="${pies[i].name}"></div>`;
-    domString += `<p class="price">$${pies[i].price}</p>`;
-    domString += `<p class="temp">Is it warm? ${pies[i].isWarm}</p>`;
-    domString += `<p class="crust">Type of crust = ${pies[i].crust}</p>`;
-    domString += `<p class="iceCream">Ice cream pairing = ${pies[i].iceCream}</p>`;
-    domString += `<p class="availability">Available = ${pies[i].isAvailable}</p>`;
-    domString += `<p class="drink">Enjoy with a nice ${pies[i].drinkPairing}</p>`;
-    domString += `<p class="instructor">${pies[i].instructor}'s favorite</p>`;
+    domString += `<h1 class='name'>${monkeybuttArray[i].name}</h1>`;
+    domString += `<div><img class="img" src=${monkeybuttArray[i].imgUrl} alt="${monkeybuttArray[i].name}"></div>`;
+    domString += `<p class="price">$${monkeybuttArray[i].price}</p>`;
+    domString += `<p class="temp">Is it warm? ${monkeybuttArray[i].isWarm}</p>`;
+    domString += `<p class="crust">Type of crust = ${monkeybuttArray[i].crust}</p>`;
+    domString += `<p class="iceCream">Ice cream pairing = ${monkeybuttArray[i].iceCream}</p>`;
+    domString += `<p class="availability">Available = ${monkeybuttArray[i].isAvailable}</p>`;
+    domString += `<p class="drink">Enjoy with a nice ${monkeybuttArray[i].drinkPairing}</p>`;
+    domString += `<p class="instructor">${monkeybuttArray[i].instructor}'s favorite</p>`;
     domString += '</div>';
     }
     printToDom('pie-safe', domString);
 };
 
-pieBuilder();
+
+const findMyPies = (e) => {
+    const buttonId = e.target.id;
+    if(buttonId === 'All'){
+        pieBuilder(pies);
+    } else {
+    const myPies = [];
+    for(let i = 0; i < pies.length; i++) {
+        if(pies[i].instructor === buttonId){
+            myPies.push(pies[i]);
+        }
+    }
+    
+    pieBuilder(myPies);
+    }
+}
+
+const events = () => {
+    document.getElementById('Zoe').addEventListener('click', findMyPies);
+    document.getElementById('Mary').addEventListener('click', findMyPies);
+    document.getElementById('Luke').addEventListener('click', findMyPies);
+    document.getElementById('Chris').addEventListener('click', findMyPies);
+    document.getElementById('All').addEventListener('click', findMyPies);
+}
+
+const init = () => {
+    pieBuilder(pies);
+    events();
+};
+
+init();
 
