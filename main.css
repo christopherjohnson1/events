@@ -1,3 +1,48 @@
 body {
-    background-color: sandybrown;
+    background-color: #FFECB3;
+    font-family: 'Roboto Mono', monospace;
+
 }
+
+h1 {
+    text-align: center;
+}
+
+#pie-safe {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: space-around;
+}
+
+.pie {
+    border: 2px solid black;
+    margin: 1%; 
+    text-align: center;
+    padding: 5px;
+    background-color: lightblue;
+    border-radius: 10px;
+    width: 30%; /*makes three cards per row*/
+}
+
+.img {
+    max-width: 100%;
+    height: 253.65px;
+}
+
+.name {
+    background-color: #FFEB3B;
+    border: 2.5px solid white;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.instructor {
+    color: #303F9F;
+    font-weight: bold;
+    background-color: #FFEB3B;
+    border: 2.5px solid white;
+}
+
